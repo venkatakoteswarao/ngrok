@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from pyngrok import ngrok
+import os
 
 app = Flask(__name__)
 
@@ -45,6 +46,8 @@ def stop():
         ngrok.disconnect(active_tunnel.public_url)
         active_tunnel = None
     return jsonify({'status': 'Tunnel stopped successfully!'})
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Get the port from the environment variable (Render provides this)
+    port = int(os.environ.get('PORT', 5000))
+    # Run Flask app on all available network interfaces (0.0.0.0)
+    app.run(host='0.0.0.0', port=port)
