@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Local URL</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Deploy Your Local Server to the Public</h1>
+        <form action="/deploy" method="POST">
+            <label for="local_url">Enter Local URL:</label>
+            <input type="text" id="local_url" name="local_url" required placeholder="e.g. http://localhost:5000">
+            <button type="submit">Deploy</button>
+        </form>
+
+        <button id="stopBtn" style="display:none;">Stop Tunnel</button>
+
+        <div id="public_url"></div>
+    </div>
+</body>
+<script src="static/script.js"></script>
+</html>
